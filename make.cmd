@@ -1,1 +1,1 @@
-docker run --rm -v C:/Users/jdkne/dev/src/qmk_firmware:/qmk:rw -e keyboard=%1 -e keymap=%2 edasque/qmk_firmware
+docker run --rm -it -w /qmk_firmware -v %CD%:/qmk_firmware:rw -e ALT_GET_KEYBOARDS=true -e SKIP_GIT=true qmkfm/base_container make %1
