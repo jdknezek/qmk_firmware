@@ -19,8 +19,8 @@
 
 enum preonic_layers {
     _QWERTY,
-    _BEAKL,
     _DVORAK,
+    _BEAKL,
     _LOWER,
     _RAISE,
     _ADJUST
@@ -28,8 +28,8 @@ enum preonic_layers {
 
 enum preonic_keycodes {
     QWERTY = SAFE_RANGE,
-    BEAKL,
     DVORAK,
+    BEAKL,
     LOWER,
     RAISE,
     BACKLIT
@@ -43,13 +43,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
         KC_LCTL, BACKLIT, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
     ),
-    [_BEAKL] = LAYOUT_preonic_grid(
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, KC_Q,    KC_H,    KC_O,    KC_U,    KC_X,    KC_G,    KC_C,    KC_R,    KC_F,    KC_Z,    _______,
-        _______, KC_Y,    KC_I,    KC_E,    KC_A,    KC_DOT,  KC_D,    KC_S,    KC_T,    KC_N,    KC_B,    KC_SCLN,
-        _______, KC_J,    KC_SLSH, KC_COMM, KC_K,    KC_QUOT, KC_W,    KC_M,    KC_L,    KC_P,    KC_V,    _______,
-        _______, KC_MINS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
-   ),
     [_DVORAK] = LAYOUT_preonic_grid(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    _______,
@@ -57,6 +50,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    _______,
         _______, BACKLIT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
+    [_BEAKL] = LAYOUT_preonic_grid(
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, KC_Q,    KC_H,    KC_O,    KC_U,    KC_X,    KC_G,    KC_C,    KC_R,    KC_F,    KC_Z,    _______,
+        _______, KC_Y,    KC_I,    KC_E,    KC_A,    KC_DOT,  KC_D,    KC_S,    KC_T,    KC_N,    KC_B,    KC_SCLN,
+        _______, KC_J,    KC_SLSH, KC_COMM, KC_K,    KC_QUOT, KC_W,    KC_M,    KC_L,    KC_P,    KC_V,    _______,
+        _______, KC_MINS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+   ),
     [_LOWER] = LAYOUT_preonic_grid(
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, _______, _______, _______, _______, _______,
         _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______, _______, _______, _______, _______, _______, _______,
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ADJUST] = LAYOUT_preonic_grid(
         _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______,
         _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF, _______, _______, _______,
-        _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  BEAKL,    DVORAK,  _______, _______,
+        _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  DVORAK,   BEAKL,   _______, _______,
         _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, KC_NLCK,  KC_PSCR, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
     )
@@ -88,15 +88,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-        case BEAKL:
-          if (record->event.pressed) {
-            set_single_persistent_default_layer(_BEAKL);
-          }
-          return false;
-          break;
         case DVORAK:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_DVORAK);
+          }
+          return false;
+          break;
+        case BEAKL:
+          if (record->event.pressed) {
+            set_single_persistent_default_layer(_BEAKL);
           }
           return false;
           break;
