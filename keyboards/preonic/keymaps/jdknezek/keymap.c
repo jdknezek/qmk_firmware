@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, KC_LT,   KC_DLR,  KC_GT,   _______, _______, KC_LBRC, KC_UNDS, KC_RBRC, _______,  _______,
         KC_PMNS, KC_BSLS, KC_LPRN, KC_DQUO, KC_RPRN, KC_HASH, KC_PERC, KC_LCBR, KC_EQL,  KC_RCBR, KC_PIPE, _______,
         _______, _______, KC_COLN, KC_ASTR, KC_PLUS, _______, _______, KC_AMPR, KC_CIRC, KC_TILD, _______, _______,
-        _______, _______, _______, _______, _______, KC_MUTE, KC_MUTE, _______, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT
     ),
     [_ADJUST] = LAYOUT_preonic_grid(
         _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______,
